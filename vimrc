@@ -1,16 +1,16 @@
 set nocompatible
 filetype off
 
-"번들 설치
+"Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"기본 설치
+"Basic
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 
-"레일즈 관련
+"Rails/Ruby Plugins
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-bundler'
@@ -23,6 +23,9 @@ Plugin 'lucapette/vim-ruby-doc'
 
 "Vim Utils
 Plugin 'scrooloose/nerdtree'
+Plugin 'AutoComplPop'
+"Taglist Requires 'ctags' package
+Plugin 'taglist-plus'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -35,6 +38,8 @@ Plugin 'rking/ag.vim'
 
 "Dash
 Plugin 'rizzatti/dash.vim'
+"Zeal
+Plugin 'KabbAmine/zeavim.vim'
 
 "Dependencies of snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -49,24 +54,8 @@ call vundle#end()
 syntax on
 filetype plugin indent on
 
+"Vim basic
 syntax enable
-
-"Macvim font setting
-set gfn=Menlo:h15
-
-set background=dark
-highlight Normal ctermfg=grey ctermbg=black
-let g:monokai_original=1
-let g:rehash256=1
-set t_Co=256
-colorscheme monokai
-
-"air-line이 상단바에도 등장
-"let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 set nu
 let g:netrw_liststyle=3
@@ -84,14 +73,45 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-" Remove highlights with leader + enter
+
+"Macvim font setting
+set gfn=Menlo:h15
+
+"Theme
+set background=dark
+highlight Normal ctermfg=grey ctermbg=black
+let g:monokai_original=1
+let g:rehash256=1
+set t_Co=256
+colorscheme monokai
+
+"Airline
+set laststatus=2
+
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+
+"Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
-" highlight the current line
+"highlight the current line
 set cursorline
-" Highlight active column
+"Highlight active column
 set cuc cul"
 
-" Tab completion
+"Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+"Make NERDTree appears on the left side of Vim
+let NERDTreeWinPos = "left"
+filetype on
+
+"Make Taglist appears on the right side of Vim
+let Tlist_Use_Right_Window = 1
+"Path of ctags for Taglist
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_Inc_Winwidth = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_Auto_Open = 0
+
