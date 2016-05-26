@@ -75,7 +75,7 @@ set ignorecase
 set smartcase
 
 "Macvim font setting
-set gfn=Menlo:h15
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 15
 
 "Theme
 set background=dark
@@ -87,6 +87,7 @@ colorscheme monokai
 
 "Airline
 set laststatus=2
+let g:airline_powerline_fonts=1
 
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
