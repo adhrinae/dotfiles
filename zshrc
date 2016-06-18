@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/RinaeHackin/.oh-my-zsh
 
+DEFAULT_USER=Rinae
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,4 +87,4 @@ source $ZSH/oh-my-zsh.sh
 
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
