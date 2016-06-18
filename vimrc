@@ -24,6 +24,8 @@ Plugin 'lucapette/vim-ruby-doc'
 "Vim Utils
 Plugin 'scrooloose/nerdtree'
 Plugin 'AutoComplPop'
+Plugin 'vim-scripts/SearchComplete'
+
 "Taglist Requires 'ctags' package
 Plugin 'taglist-plus'
 Plugin 'vim-airline/vim-airline'
