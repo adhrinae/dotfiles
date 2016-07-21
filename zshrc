@@ -88,3 +88,5 @@ source $ZSH/oh-my-zsh.sh
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

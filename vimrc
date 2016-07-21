@@ -62,9 +62,13 @@ syntax enable
 set nu
 let g:netrw_liststyle=3
 
+set smartindent
+
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set backspace=2
+set scrolloff=2
 set expandtab
 
 set noimd
@@ -76,8 +80,12 @@ set incsearch
 set ignorecase
 set smartcase
 
+"Custom Keybindings
+nmap ; :
+let mapleader = "\<Space>"
+
 "Macvim font setting
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 15
+set guifont=Hack 15
 
 "Theme
 set background=dark
@@ -85,7 +93,7 @@ highlight Normal ctermfg=grey ctermbg=black
 let g:monokai_original=1
 let g:rehash256=1
 set t_Co=256
-colorscheme monokai
+colorscheme molokai
 
 "Airline
 set laststatus=2
