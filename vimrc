@@ -21,6 +21,10 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'lucapette/vim-ruby-doc'
 
+"Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'crusoexia/vim-javascript-lib'
+
 "Vim Utils
 Plugin 'scrooloose/nerdtree'
 Plugin 'AutoComplPop'
@@ -49,7 +53,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
 
 "Theme
-Plugin 'tomasr/molokai'
 Plugin 'crusoexia/vim-monokai'
 
 call vundle#end()
@@ -85,7 +88,7 @@ nmap ; :
 let mapleader = "\<Space>"
 
 "Macvim font setting
-set guifont=Hack 15
+set guifont=Hack:h16
 
 "Theme
 set background=dark
@@ -93,7 +96,11 @@ highlight Normal ctermfg=grey ctermbg=black
 let g:monokai_original=1
 let g:rehash256=1
 set t_Co=256
-colorscheme molokai
+colorscheme monokai
+
+"Italic Fonts with monokai theme
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
 
 "Airline
 set laststatus=2
@@ -126,3 +133,5 @@ let Tlist_Inc_Winwidth = 0
 let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
 
+"ignorelist for ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
