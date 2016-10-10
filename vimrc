@@ -27,8 +27,8 @@ Plugin 'crusoexia/vim-javascript-lib'
 
 "Vim Utils
 Plugin 'scrooloose/nerdtree'
-Plugin 'AutoComplPop'
 Plugin 'vim-scripts/SearchComplete'
+Plugin 'vim-scripts/AutoComplPop'
 
 "Taglist Requires 'ctags' package
 Plugin 'taglist-plus'
@@ -52,70 +52,88 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
 
-"Theme
-Plugin 'crusoexia/vim-monokai'
+" Markdown
+Plugin 'plasticboy/vim-markdown'
+
+" Theme
+" Molokai theme
+Plugin 'tomasr/molokai'
 
 call vundle#end()
-syntax on
 filetype plugin indent on
 
-"Vim basic
+" Ruby stuff: Thanks Ben :)
+" ================
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+augroup myfiletypes
+	" Clear old autocmds in group
+	autocmd!
+	" autoindent with two spaces, always expand tabs
+	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
+augroup END
+" ================
+
+" Syntax highlighting and theme
+
 syntax enable
+
+" Configs to make Molokai look great
+set background=dark
+let g:molokai_original=1
+let g:rehash256=1
+set t_Co=256
+colorscheme molokai
+
+set guifont=Hack\ 16
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 set nu
 let g:netrw_liststyle=3
 
-set smartindent
-
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set backspace=2
-set scrolloff=2
 set expandtab
-
-set noimd
-set imi=1
-set ims=-1
 
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-"Custom Keybindings
-nmap ; :
-let mapleader = "\<Space>"
+" Macvim can access system clipboard as the register
+set clipboard=unnamed
 
-"Macvim font setting
-set guifont=Hack:h16
+" highlight the current line
+set cursorline
+" Highlight active column
+set cuc cul"
 
-"Theme
-set background=dark
-highlight Normal ctermfg=grey ctermbg=black
-let g:monokai_original=1
-let g:rehash256=1
-set t_Co=256
-colorscheme monokai
-
-"Italic Fonts with monokai theme
-let g:monokai_term_italic = 1
-let g:monokai_gui_italic = 1
-
-"Airline
-set laststatus=2
-let g:airline_powerline_fonts=1
-
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
-
-"Remove highlights with leader + enter
+" map Leader key to comma
+let mapleader = ","
+" Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
-"highlight the current line
-set cursorline
-"Highlight active column
-set cuc cul"
+" Buffer switching
+map <leader>p :bp<CR> " \p previous buffer
+map <leader>n :bn<CR> " \n next buffer
+map <leader>d :bd<CR> " \d delete buffer
+
+" Ruby hash syntax conversion
+nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
+
+" Toggle NERDTree
+map <leader>q :NERDTreeToggle<CR>
+
+" Removing escape
+ino jj <esc>
+cno jj <c-c>
+vno v <esc>
 
 "Tab completion
 set wildmode=list:longest,list:full
