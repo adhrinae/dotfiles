@@ -44,8 +44,6 @@ Plugin 'rking/ag.vim'
 
 "Dash
 Plugin 'rizzatti/dash.vim'
-"Zeal
-Plugin 'KabbAmine/zeavim.vim'
 
 "Dependencies of snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -86,7 +84,6 @@ let g:rehash256=1
 set t_Co=256
 colorscheme molokai
 
-set guifont=Hack\ 16
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
@@ -108,6 +105,12 @@ set smartcase
 
 " Macvim can access system clipboard as the register
 set clipboard=unnamed
+" Macvim font setting
+set linespace=2
+set encoding=utf-8
+set fileencoding=utf-8
+set guifont=Hack:h16
+set guifontwide=D2Coding:h14
 
 " highlight the current line
 set cursorline
@@ -131,8 +134,8 @@ nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
 map <leader>q :NERDTreeToggle<CR>
 
 " Removing escape
-ino jj <esc>
-cno jj <c-c>
+ino jk <esc>
+cno jk <c-c>
 vno v <esc>
 
 "Tab completion
