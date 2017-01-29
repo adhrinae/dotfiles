@@ -13,13 +13,10 @@ Plugin 'L9'
 "Rails/Ruby Plugins
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-projectionist'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'lucapette/vim-ruby-doc'
+Plugin 'tpope/vim-bundler'
 
 "Javascript
 Plugin 'pangloss/vim-javascript'
@@ -28,27 +25,27 @@ Plugin 'crusoexia/vim-javascript-lib'
 "Vim Utils
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/SearchComplete'
-Plugin 'vim-scripts/AutoComplPop'
-
-"Taglist Requires 'ctags' package
-Plugin 'taglist-plus'
+Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
-Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'rking/ag.vim'
 
-"Dash
-Plugin 'rizzatti/dash.vim'
-
-"Dependencies of snipmate
+" Autocompletion and snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'AutocomplPop'
+
+"Dash
+Plugin 'rizzatti/dash.vim'
+"Emmet
+Plugin 'mattn/emmet-vim'
 
 " Markdown
 Plugin 'plasticboy/vim-markdown'
@@ -56,6 +53,7 @@ Plugin 'plasticboy/vim-markdown'
 " Theme
 " Molokai theme
 Plugin 'tomasr/molokai'
+Plugin 'jpo/vim-railscasts-theme'
 
 call vundle#end()
 filetype plugin indent on
@@ -74,18 +72,14 @@ augroup END
 " ================
 
 " Syntax highlighting and theme
-
 syntax enable
 
 " Configs to make Molokai look great
 set background=dark
-let g:molokai_original=1
-let g:rehash256=1
-set t_Co=256
-colorscheme molokai
+colorscheme railscasts
 
 set laststatus=2
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
@@ -96,6 +90,7 @@ let g:netrw_liststyle=3
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set backspace=2
 set expandtab
 
 set hlsearch
@@ -109,13 +104,16 @@ set clipboard=unnamed
 set linespace=2
 set encoding=utf-8
 set fileencoding=utf-8
-set guifont=Hack:h16
+set guifont=Hack:h15
 set guifontwide=D2Coding:h14
 
 " highlight the current line
 set cursorline
 " Highlight active column
 set cuc cul"
+
+" Enable mouse use in all modes
+set mouse=a
 
 " map Leader key to comma
 let mapleader = ","
@@ -138,9 +136,26 @@ ino jk <esc>
 cno jk <c-c>
 vno v <esc>
 
+" moving rows
+noremap j gj
+noremap k gk
+
+" Set // to search the current visual selection
+vnoremap // y/<C-R>"<CR>"
+
+" next/prev quicklist item
+nmap <c-b> :cprevious<CR>
+nmap <c-n> :cnext<CR>
+
+" toggle paste in cmd only
+nnoremap <Leader>p :set invpaste<CR>
+
 "Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
+
+" CtrlP custom ignore
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|build)$'
 
 "Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
@@ -154,5 +169,3 @@ let Tlist_Inc_Winwidth = 0
 let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
 
-"ignorelist for ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
