@@ -29,18 +29,20 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'rking/ag.vim'
 
 " Autocompletion and snippets
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'AutocomplPop'
+Plugin 'SirVer/ultisnips'
+
+"Run test
+Plugin 'janko-m/vim-test'
 
 "Dash
 Plugin 'rizzatti/dash.vim'
@@ -51,8 +53,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'
 
 " Theme
-" Molokai theme
-Plugin 'tomasr/molokai'
 Plugin 'jpo/vim-railscasts-theme'
 
 call vundle#end()
@@ -79,7 +79,7 @@ set background=dark
 colorscheme railscasts
 
 set laststatus=2
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
@@ -154,6 +154,18 @@ nnoremap <Leader>p :set invpaste<CR>
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
 
+" Ultisnips configuration
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Vim-test shortcuts
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
 " CtrlP custom ignore
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|build)$'
 
@@ -163,6 +175,7 @@ filetype on
 
 "Make Taglist appears on the right side of Vim
 let Tlist_Use_Right_Window = 1
+
 "Path of ctags for Taglist
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_Inc_Winwidth = 0
