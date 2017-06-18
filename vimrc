@@ -1,62 +1,54 @@
-set nocompatible
-filetype off
+"Vim Plug
+call plug#begin('~/.vim/plugged')
 
-"Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"Git
+Plug 'tpope/vim-fugitive'
 
-"Basic
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
+"Syntax Highlighting
+Plug 'sheerun/vim-polyglot'
 
 "Rails/Ruby Plugins
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-bundler'
-
-"Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'crusoexia/vim-javascript-lib'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-bundler'
 
 "Vim Utils
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/SearchComplete'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/SearchComplete'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'rking/ag.vim'
 
 " Autocompletion and snippets
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 "Run test
-Plugin 'janko-m/vim-test'
+Plug 'janko-m/vim-test'
 
 "Dash
-Plugin 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 "Emmet
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " Markdown
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
 " Theme
-Plugin 'jpo/vim-railscasts-theme'
+Plug 'jpo/vim-railscasts-theme'
+Plug 'lifepillar/vim-solarized8'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " Ruby stuff: Thanks Ben :)
 " ================
@@ -71,15 +63,22 @@ augroup myfiletypes
 augroup END
 " ================
 
+au BufNewFile,BufRead *.handlebars set file type=html
+
 " Syntax highlighting and theme
 syntax enable
 
-" Configs to make Molokai look great
+" Railscasts Theme
 set background=dark
-colorscheme railscasts
+" colorscheme railscasts
+
+" Solarized dark theme enhanced
+colorscheme solarized8_dark
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
@@ -104,7 +103,7 @@ set clipboard=unnamed
 set linespace=2
 set encoding=utf-8
 set fileencoding=utf-8
-set guifont=Hack:h15
+set guifont=Fira_Code:h14
 set guifontwide=D2Coding:h14
 
 " highlight the current line
@@ -117,13 +116,23 @@ set mouse=a
 
 " map Leader key to comma
 let mapleader = ","
+
+" Change space key's behavior
+map <Space> :
+
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
 " Buffer switching
-map <leader>p :bp<CR> " \p previous buffer
-map <leader>n :bn<CR> " \n next buffer
-map <leader>d :bd<CR> " \d delete buffer
+" previous buffer
+map <leader>jj :bp<CR>
+" next buffer
+map <leader>kk :bn<CR>
+" delete buffer and move to previous buffer
+nmap <leader>dd :bp <BAR> bd #<CR>
+" Toggle BufferExplorer
+nmap <leader>be :BufExplorer<CR>
+
 
 " Ruby hash syntax conversion
 nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
@@ -148,9 +157,9 @@ nmap <c-b> :cprevious<CR>
 nmap <c-n> :cnext<CR>
 
 " toggle paste in cmd only
-nnoremap <Leader>p :set invpaste<CR>
+nnoremap <F2> :set invpaste paste?<CR>
 
-"Tab completion
+" Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
 
@@ -166,19 +175,29 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
-" CtrlP custom ignore
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|build)$'
+" custom CtrlP ignore
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
 
-"Make NERDTree appears on the left side of Vim
+" Use the closest .git directory as a workspace
+let g:ctrlp_working_path_mode = 'r'
+
+" Shortcuts for CtrlP modes
+nmap <leader>pb :CtrlPBuffer<CR>
+nmap <leader>pm :CtrlPMixed<CR>
+nmap <leader>ps :CtrlPMRU<CR>
+
+" Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
 filetype on
 
-"Make Taglist appears on the right side of Vim
+" Make Taglist appears on the right side of Vim
 let Tlist_Use_Right_Window = 1
 
-"Path of ctags for Taglist
+" Path of ctags for Taglist
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_Inc_Winwidth = 0
 let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
-
