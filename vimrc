@@ -7,14 +7,9 @@ Plug 'tpope/vim-fugitive'
 "Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
 
-"Rails/Ruby Plugins
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
+"Vim Utils
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-bundler'
-
-"Vim Utils
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/SearchComplete'
 Plug 'majutsushi/tagbar'
@@ -25,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rking/ag.vim'
+Plug 'tpope/vim-unimpaired'
 
 " Autocompletion and snippets
 Plug 'Valloric/YouCompleteMe'
@@ -33,11 +29,6 @@ Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 
-"Run test
-Plug 'janko-m/vim-test'
-
-"Dash
-Plug 'rizzatti/dash.vim'
 "Emmet
 Plug 'mattn/emmet-vim'
 
@@ -45,7 +36,6 @@ Plug 'mattn/emmet-vim'
 Plug 'plasticboy/vim-markdown'
 
 " Theme
-Plug 'jpo/vim-railscasts-theme'
 Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
@@ -67,13 +57,9 @@ au BufNewFile,BufRead *.handlebars set file type=html
 
 " Syntax highlighting and theme
 syntax enable
-
-" Railscasts Theme
-set background=dark
-" colorscheme railscasts
-
-" Solarized dark theme enhanced
 colorscheme solarized8_dark
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -167,13 +153,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.s
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" Vim-test shortcuts
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 
 " custom CtrlP ignore
 let g:ctrlp_custom_ignore = {
