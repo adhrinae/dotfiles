@@ -6,6 +6,8 @@ Plug 'tpope/vim-fugitive'
 
 "Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 "Vim Utils
 Plug 'jlanzarotta/bufexplorer'
@@ -34,6 +36,7 @@ Plug 'mattn/emmet-vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
 Plug 'lifepillar/vim-solarized8'
@@ -58,8 +61,6 @@ au BufNewFile,BufRead *.handlebars set file type=html
 " Syntax highlighting and theme
 syntax enable
 colorscheme solarized8_dark
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -156,7 +157,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " custom CtrlP ignore
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
