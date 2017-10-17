@@ -39,7 +39,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
-Plug 'lifepillar/vim-solarized8'
+Plug 'tyrannicaltoucan/vim-quantum'
 
 call plug#end()
 
@@ -60,12 +60,16 @@ au BufNewFile,BufRead *.handlebars set file type=html
 
 " Syntax highlighting and theme
 syntax enable
-colorscheme solarized8_dark
+set background=dark
+set termguicolors
+colorscheme quantum
+let g:quantum_italics=1
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme='quantum'
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
@@ -84,14 +88,15 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Relative numbers
+set number relativenumber
+
 " Macvim can access system clipboard as the register
 set clipboard=unnamed
 " Macvim font setting
 set linespace=2
 set encoding=utf-8
 set fileencoding=utf-8
-set guifont=Fira_Code:h14
-set guifontwide=D2Coding:h14
 
 " highlight the current line
 set cursorline
