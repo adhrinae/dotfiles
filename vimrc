@@ -1,8 +1,12 @@
+""""""""""""""""""""
+"     Plugins      "
+""""""""""""""""""""
 "Vim Plug
 call plug#begin('~/.vim/plugged')
 
 "Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 "Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
@@ -10,19 +14,16 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 "Vim Utils
-Plug 'jlanzarotta/bufexplorer'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/SearchComplete'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'itchyny/lightline.vim'
 
 " Autocompletion and snippets
 Plug 'Valloric/YouCompleteMe'
@@ -43,21 +44,9 @@ Plug 'tyrannicaltoucan/vim-quantum'
 
 call plug#end()
 
-" Ruby stuff: Thanks Ben :)
-" ================
-syntax on                 " Enable syntax highlighting
-filetype plugin indent on " Enable filetype-specific indenting and plugins
-
-augroup myfiletypes
-	" Clear old autocmds in group
-	autocmd!
-	" autoindent with two spaces, always expand tabs
-	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
-augroup END
-" ================
-
-au BufNewFile,BufRead *.handlebars set file type=html
-
+""""""""""""""""""""
+"       Theme      "
+""""""""""""""""""""
 " Syntax highlighting and theme
 syntax enable
 set background=dark
@@ -65,15 +54,28 @@ set termguicolors
 colorscheme quantum
 let g:quantum_italics=1
 
+" lightline settings
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='quantum'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'], ['percent'], ['readonly']]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
+" Add red block to trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
+
+""""""""""""""""""""
+"      Basic       "
+""""""""""""""""""""
 set nu
 let g:netrw_liststyle=3
 
@@ -106,6 +108,10 @@ set cuc cul"
 " Enable mouse use in all modes
 set mouse=a
 
+
+""""""""""""""""""""
+"      Keymaps     "
+""""""""""""""""""""
 " map Leader key to comma
 let mapleader = ","
 
@@ -115,24 +121,11 @@ map <Space> :
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
-" Buffer switching
-" previous buffer
-map <leader>jj :bp<CR>
-" next buffer
-map <leader>kk :bn<CR>
-" delete buffer and move to previous buffer
-nmap <leader>dd :bp <BAR> bd #<CR>
-" Toggle BufferExplorer
-nmap <leader>be :BufExplorer<CR>
-
-
-" Ruby hash syntax conversion
-nnoremap <F12> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<return>
 
 " Toggle NERDTree
 map <leader>q :NERDTreeToggle<CR>
 
-" Removing escape
+" Add escape like behavior
 ino jk <esc>
 cno jk <c-c>
 vno v <esc>
@@ -151,6 +144,16 @@ nmap <c-n> :cnext<CR>
 " toggle paste in cmd only
 nnoremap <F2> :set invpaste paste?<CR>
 
+" fzf
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>p :Files<CR>
+nmap <Leader>t :Tags<CR>
+
+
+""""""""""""""""""""
+" Plugin settings  "
+""""""""""""""""""""
+
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
@@ -159,20 +162,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.s
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" custom CtrlP ignore
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-
-" Use the closest .git directory as a workspace
-let g:ctrlp_working_path_mode = 'r'
-
-" Shortcuts for CtrlP modes
-nmap <leader>pb :CtrlPBuffer<CR>
-nmap <leader>pm :CtrlPMixed<CR>
-nmap <leader>ps :CtrlPMRU<CR>
 
 " Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
