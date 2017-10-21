@@ -24,6 +24,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
 Plug 'Valloric/YouCompleteMe'
@@ -56,6 +57,7 @@ let g:quantum_italics=1
 
 " lightline settings
 set laststatus=2
+set showtabline=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -67,6 +69,9 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " Add red block to trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -146,7 +151,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 
 " fzf
 nmap <Leader>b :Buffers<CR>
-nmap <Leader>p :Files<CR>
+nmap <Leader>p :GFiles<CR>
 nmap <Leader>t :Tags<CR>
 
 
