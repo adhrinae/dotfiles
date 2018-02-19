@@ -10,15 +10,12 @@ Plug 'airblade/vim-gitgutter'
 
 "Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 
 "Vim Utils
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/SearchComplete'
-Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
@@ -27,11 +24,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
-Plug 'Valloric/YouCompleteMe'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
+Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 "Emmet
 Plug 'mattn/emmet-vim'
@@ -136,8 +131,8 @@ cno jk <c-c>
 vno v <esc>
 
 " moving rows
-noremap j gj
-noremap k gk
+"noremap j gj
+"noremap k gk
 
 " Set // to search the current visual selection
 vnoremap // y/<C-R>"<CR>"
@@ -158,6 +153,8 @@ nmap <Leader>t :Tags<CR>
 """"""""""""""""""""
 " Plugin settings  "
 """"""""""""""""""""
+"neocomplcache
+let g:neocomplcache_enable_at_startup = 1
 
 " Tab completion
 set wildmode=list:longest,list:full
@@ -171,12 +168,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
 filetype on
-
-" Make Taglist appears on the right side of Vim
-let Tlist_Use_Right_Window = 1
-
-" Path of ctags for Taglist
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_Inc_Winwidth = 0
-let Tlist_Exit_OnlyWindow = 0
-let Tlist_Auto_Open = 0
