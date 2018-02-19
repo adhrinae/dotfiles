@@ -8,8 +8,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"Syntax Highlighting
+"Syntax Highlighting & Language supports
 Plug 'sheerun/vim-polyglot'
+Plug 'mhartington/nvim-typescript'
 
 "Vim Utils
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
