@@ -1,13 +1,13 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/RinaeHackin/.oh-my-zsh
+export ZSH=/Users/rinae/.oh-my-zsh
 
-DEFAULT_USER=Rinae
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,14 +51,13 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby gem alias-tips)
+plugins=(git npm zsh-completions)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -74,19 +73,30 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+alias vi="nvim"
+alias vim="nvim"
 
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.vimrc"
+alias rbs="ruby -run -e httpd . -p 7777"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias gld="gl origin development"
+alias gpd="gp origin development"
+
+alias nr="npm run"
+
+# zsh-completions
+autoload -U compinit && compinit
+
+export EDITOR="nvim"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
