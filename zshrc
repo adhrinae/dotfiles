@@ -51,7 +51,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm zsh-completions)
+plugins=(git npm colorize alias-tips fasd zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 #
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 
 alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.vimrc"
@@ -100,3 +101,5 @@ export EDITOR="nvim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# alias-tips
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
