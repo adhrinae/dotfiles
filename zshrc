@@ -110,3 +110,6 @@ autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=10
 PURE_PROMPT_SYMBOL=λ
 prompt pure
+
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
