@@ -7,7 +7,7 @@ export ZSH=/Users/rinae/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="" # Using pure-prompt. need to install through npm
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -103,3 +103,10 @@ export EDITOR="nvim"
 
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+
+# pure prompt
+autoload -U promptinit; promptinit
+# optionally define some options
+PURE_CMD_MAX_EXEC_TIME=10
+PURE_PROMPT_SYMBOL=λ
+prompt pure
