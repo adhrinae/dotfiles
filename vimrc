@@ -25,7 +25,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
-Plug 'roxma/nvim-completion-manager'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -164,6 +165,10 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.s
 " Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
 filetype on
+
+" ncm2 (nvim-completion-manager)
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 " neosnippet key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.

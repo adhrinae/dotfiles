@@ -93,6 +93,9 @@ alias gld="gl origin development"
 alias gpd="gp origin development"
 
 alias nr="npm run"
+alias ys="yarn start"
+alias yt="yarn test"
+alias y="yarn"
 
 # zsh-completions
 autoload -U compinit && compinit
@@ -111,5 +114,3 @@ PURE_CMD_MAX_EXEC_TIME=10
 PURE_PROMPT_SYMBOL=λ
 prompt pure
 
-# chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
