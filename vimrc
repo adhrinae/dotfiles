@@ -151,6 +151,9 @@ nmap <Leader>b :Buffers<CR>
 nmap <Leader>p :GFiles<CR>
 nmap <Leader>t :Tags<CR>
 
+" Exit neovim terminal with ESC key
+tnoremap <Esc> <C-\><C-n>
+
 
 """"""""""""""""""""
 " Plugin settings  "
