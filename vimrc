@@ -1,18 +1,19 @@
 """"""""""""""""""""
 "     Plugins      "
 """"""""""""""""""""
-"Vim Plug
+" Vim Plug
 call plug#begin('~/.vim/plugged')
 
-"Git
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"Syntax Highlighting & Language supports
+" Syntax Highlighting & Language supports
 Plug 'sheerun/vim-polyglot'
-Plug 'mhartington/nvim-typescript'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
-"Vim Utils
+" Vim Utils
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -25,17 +26,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-"Emmet
+" Emmet
 Plug 'mattn/emmet-vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/vim-xmark', { 'do': 'make' }
+  Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
 Plug 'tyrannicaltoucan/vim-quantum'
@@ -158,8 +158,12 @@ tnoremap <Esc> <C-\><C-n>
 """"""""""""""""""""
 " Plugin settings  "
 """"""""""""""""""""
-"neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 " Tab completion
 set wildmode=list:longest,list:full
@@ -168,16 +172,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.s
 " Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
 filetype on
-
-" ncm2 (nvim-completion-manager)
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-" neosnippet key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.

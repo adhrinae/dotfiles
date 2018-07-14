@@ -80,13 +80,10 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-#
-alias vi="nvim"
-alias vim="nvim"
-alias vimdiff="nvim -d"
 
-alias zshconfig="nvim ~/.zshrc"
-alias vimconfig="nvim ~/.vimrc"
+alias vi="vim"
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
 alias rbs="ruby -run -e httpd . -p 7777"
 
 alias gld="gl origin development"
@@ -100,7 +97,7 @@ alias y="yarn"
 # zsh-completions
 autoload -U compinit && compinit
 
-export EDITOR="nvim"
+export EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
