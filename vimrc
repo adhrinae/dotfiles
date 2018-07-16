@@ -30,6 +30,9 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Prettier
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 " Emmet
 Plug 'mattn/emmet-vim'
 
@@ -38,7 +41,7 @@ Plug 'plasticboy/vim-markdown'
   Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
-Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
@@ -49,8 +52,7 @@ call plug#end()
 syntax enable
 set background=dark
 set termguicolors
-colorscheme quantum
-let g:quantum_italics=1
+colorscheme solarized8_flat
 
 " lightline settings
 set laststatus=2
@@ -98,6 +100,7 @@ set number relativenumber
 " Macvim can access system clipboard as the register
 set clipboard=unnamed
 " Macvim font setting
+set guifont=Fira\ Code:h14
 set linespace=2
 set encoding=utf-8
 set fileencoding=utf-8
@@ -110,6 +113,10 @@ set cuc cul"
 " Enable mouse use in all modes
 set mouse=a
 
+" Python3 hotfix
+if has('python3')
+  silent! python3 1
+endif
 
 """"""""""""""""""""
 "      Keymaps     "
@@ -133,8 +140,8 @@ cno jk <c-c>
 vno v <esc>
 
 " moving rows
-"noremap j gj
-"noremap k gk
+noremap j gj
+noremap k gk
 
 " Set // to search the current visual selection
 vnoremap // y/<C-R>"<CR>"
@@ -151,18 +158,17 @@ nmap <Leader>b :Buffers<CR>
 nmap <Leader>p :GFiles<CR>
 nmap <Leader>t :Tags<CR>
 
-" Exit neovim terminal with ESC key
-tnoremap <Esc> <C-\><C-n>
-
+" Prettier
+nmap <Leader>pt <Plug>(Prettier)
 
 """"""""""""""""""""
 " Plugin settings  "
 """"""""""""""""""""
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Tab completion
