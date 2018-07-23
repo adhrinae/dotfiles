@@ -156,6 +156,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>p :Files<CR>
 nmap <Leader>gp :GitFiles<CR>
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Prettier
 nmap <Leader>t <Plug>(Prettier)
