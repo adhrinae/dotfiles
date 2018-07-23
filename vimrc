@@ -130,7 +130,6 @@ map <Space> :
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
-
 " Toggle NERDTree
 map <leader>q :NERDTreeToggle<CR>
 
@@ -155,11 +154,11 @@ nnoremap <F2> :set invpaste paste?<CR>
 
 " fzf
 nmap <Leader>b :Buffers<CR>
-nmap <Leader>p :GFiles<CR>
-nmap <Leader>t :Tags<CR>
+nmap <Leader>p :Files<CR>
+nmap <Leader>gp :GitFiles<CR>
 
 " Prettier
-nmap <Leader>pt <Plug>(Prettier)
+nmap <Leader>t <Plug>(Prettier)
 
 """"""""""""""""""""
 " Plugin settings  "
@@ -178,15 +177,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.s
 " Make NERDTree appears on the left side of Vim
 let NERDTreeWinPos = "left"
 filetype on
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')

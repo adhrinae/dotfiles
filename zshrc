@@ -101,6 +101,7 @@ autoload -U compinit && compinit
 export EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
