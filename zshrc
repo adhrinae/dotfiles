@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/bin:$HOME/bin:$PATH
+export PATH=/usr/local/bin:$HOME/bin:$PATH:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rinae/.oh-my-zsh
@@ -93,6 +93,7 @@ alias gsm="gcm && gup upstream master && gp origin master"
 alias nr="npm run"
 alias ys="yarn start"
 alias yt="yarn test"
+alias ysb="yarn storybook"
 alias y="yarn"
 
 # zsh-completions
@@ -114,3 +115,7 @@ PURE_PROMPT_SYMBOL=λ
 prompt pure
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# GOPATH
+export GOPATH=$HOME/development/go
+
