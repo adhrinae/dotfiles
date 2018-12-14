@@ -12,6 +12,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'heavenshell/vim-tslint'
 
 " Vim Utils
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -38,10 +39,12 @@ Plug 'mattn/emmet-vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
-  Plug 'junegunn/vim-xmark', { 'do': 'make' }
+Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
-Plug 'lifepillar/vim-solarized8'
+Plug 'mhartington/oceanic-next'
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -49,10 +52,9 @@ call plug#end()
 "       Theme      "
 """"""""""""""""""""
 " Syntax highlighting and theme
-syntax enable
+syntax on
 set background=dark
-set termguicolors
-colorscheme solarized8_flat
+colorscheme gruvbox
 
 " lightline settings
 set laststatus=2
@@ -75,7 +77,6 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 " Add red block to trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
-
 
 """"""""""""""""""""
 "      Basic       "
@@ -107,8 +108,6 @@ set fileencoding=utf-8
 
 " highlight the current line
 set cursorline
-" Highlight active column
-set cuc cul"
 
 " Enable mouse use in all modes
 set mouse=a
@@ -183,3 +182,32 @@ filetype on
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" Tsuquyomi - Tooltip (not working in terminal vim)
+set ballooneval
+autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+
+" vim-tslint with Tsuquyomi
+augroup tslint
+  function! s:typescript_after(ch, msg)
+    let cnt = len(getqflist())
+    if cnt > 0
+      echomsg printf('[Tslint] %s errors', cnt)
+    endif
+  endfunction
+  let g:tslint_callbacks = {
+    \ 'after_run': function('s:typescript_after')
+    \ }
+
+  let g:tsuquyomi_disable_quickfix = 1
+
+  function! s:ts_quickfix()
+    let winid = win_getid()
+    execute ':TsuquyomiGeterr'
+    call tslint#run('a', winid)
+  endfunction
+
+  autocmd BufWritePost *.ts,*.tsx silent! call s:ts_quickfix()
+  autocmd InsertLeave *.ts,*.tsx silent! call s:ts_quickfix()
+augroup END
+

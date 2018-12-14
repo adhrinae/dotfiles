@@ -96,6 +96,8 @@ alias yt="yarn test"
 alias ysb="yarn storybook"
 alias y="yarn"
 
+alias lg="lazygit"
+
 # zsh-completions
 autoload -U compinit && compinit
 
