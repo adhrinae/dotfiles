@@ -12,13 +12,19 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: 'Hack',
+    fontFamily: 'Hack, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
+
+    // line height as a relative unit
+    lineHeight: 1,
+
+    // letter spacing as a relative unit
+    letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -123,6 +129,16 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    hyperline: {
+      plugins: [
+        "ip",
+        "cpu",
+        "memory",
+        "network",
+        "spotify",
+      ]
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -132,14 +148,14 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    "hyper-night-owl",
+    "hyper-pane",
+    "hyperline",
+    "hyper-tabs-enhanced",
     "hypercwd",
-    "hyper-statusline",
-    "hyper-quit",
-    "hyper-tab-icons-plus",
-    "hyperterm-summon",
-    "hyperterm-tabs",
-    "hyper-solarized-dark",
-    "hyper-material-theme"
+    "hyper-search",
+    "hyperalfred",
+    "hyperterm-summon"
   ],
 
   // in development, you can create a directory under
