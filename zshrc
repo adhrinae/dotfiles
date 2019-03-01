@@ -86,9 +86,8 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias rbs="ruby -run -e httpd . -p 7777"
 
-alias gld="gl origin develop"
+alias gud="gup origin develop"
 alias gpd="gp origin develop"
-alias gsm="gcm && gup upstream master && gp origin master"
 
 alias nr="npm run"
 alias ys="yarn start"
@@ -96,7 +95,7 @@ alias yt="yarn test"
 alias ysb="yarn storybook"
 alias y="yarn"
 
-alias lg="lazygit"
+alias lgt="lazygit"
 
 # zsh-completions
 autoload -U compinit && compinit
