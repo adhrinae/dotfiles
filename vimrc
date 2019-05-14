@@ -10,9 +10,8 @@ Plug 'airblade/vim-gitgutter'
 
 " Syntax Highlighting & Language supports
 Plug 'sheerun/vim-polyglot'
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-Plug 'heavenshell/vim-tslint'
 
 " Vim Utils
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -27,11 +26,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" Prettier
+" Linter & Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Emmet
@@ -42,8 +41,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
-Plug 'mhartington/oceanic-next'
-Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -59,20 +56,21 @@ colorscheme gruvbox
 " lightline settings
 set laststatus=2
 set showtabline=2
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filename', 'modified' ] ],
-      \   'right': [['lineinfo'], ['percent'], ['readonly']]
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
       \ },
       \ }
-let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " Add red block to trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -152,17 +150,35 @@ nmap <c-n> :cnext<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 
 " fzf
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>p :Files<CR>
-nmap <Leader>gp :GitFiles<CR>
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <Leader>b :FzfBuffers<CR>
+nnoremap <Leader>h :FzfHistory<CR>
+nnoremap <Leader>p :FzfFiles<CR>
+nnoremap <Leader>gp :FzfGitFiles<CR>
+nnoremap <Leader>p :FzfGitFiles --exclude-standard --others --cached<CR>
+nnoremap <Leader>g :FzfRg<CR>
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Prettier
 nmap <Leader>t <Plug>(Prettier)
 
+
 """"""""""""""""""""
 " Plugin settings  "
 """"""""""""""""""""
+
+" ALE
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['eslint']
+let g:ale_fixers['json'] = ['prettier']
+let g:ale_fixers['scss'] = ['stylelint', 'prettier']
+let g:ale_fix_on_save = 1 " Fix files automatically on save
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+" Move between linting errors
+nmap <silent> [c <Plug>(ale_previous_wrap)
+nmap <silent> ]c <Plug>(ale_next_wrap)
+nmap <F6> <Plug>(ale_fix)
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -183,31 +199,23 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-" Tsuquyomi - Tooltip (not working in terminal vim)
-set ballooneval
-autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+" Ripgrep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
-" vim-tslint with Tsuquyomi
-augroup tslint
-  function! s:typescript_after(ch, msg)
-    let cnt = len(getqflist())
-    if cnt > 0
-      echomsg printf('[Tslint] %s errors', cnt)
-    endif
-  endfunction
-  let g:tslint_callbacks = {
-    \ 'after_run': function('s:typescript_after')
-    \ }
+" vim pretty template
+call jspretmpl#register_tag('html', 'javascript')
 
-  let g:tsuquyomi_disable_quickfix = 1
+autocmd FileType javascript JsPreTmpl
+autocmd FileType javascript.jsx JsPreTmpl
 
-  function! s:ts_quickfix()
-    let winid = win_getid()
-    execute ':TsuquyomiGeterr'
-    call tslint#run('a', winid)
-  endfunction
-
-  autocmd BufWritePost *.ts,*.tsx silent! call s:ts_quickfix()
-  autocmd InsertLeave *.ts,*.tsx silent! call s:ts_quickfix()
-augroup END
-
+" emmet
+let g:user_emmet_expandabbr_key='<C-@>'
+imap <expr> <C-Space> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
