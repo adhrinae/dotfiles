@@ -156,7 +156,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <Leader>b :FzfBuffers<CR>
 nnoremap <Leader>h :FzfHistory<CR>
-nnoremap <Leader>p :FzfFiles<CR>
+nnoremap <Leader>f :FzfFiles<CR>
 nnoremap <Leader>gp :FzfGitFiles<CR>
 nnoremap <Leader>p :FzfGitFiles --exclude-standard --others --cached<CR>
 nnoremap <Leader>g :FzfRg<CR>
