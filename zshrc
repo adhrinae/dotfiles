@@ -101,8 +101,6 @@ alias y="yarn"
 
 alias cdw="cd ~/development/project_work/cloud-web"
 
-alias lgt="lazygit"
-
 # zsh-completions
 autoload -U compinit && compinit
 
@@ -115,9 +113,6 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-# GOPATH
-export GOPATH=$HOME/development/go
 
 # Ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
