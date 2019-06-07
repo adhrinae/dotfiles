@@ -7,7 +7,7 @@ export ZSH=/Users/rinae/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="" # Using pure-prompt. need to install through npm
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -97,6 +97,8 @@ alias yt="yarn test"
 alias ysb="yarn storybook"
 alias y="yarn"
 
+alias cdw="cd ~/development/project_work/cloud-web"
+
 alias lgt="lazygit"
 
 # zsh-completions
@@ -109,13 +111,6 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
-
-# pure prompt
-autoload -U promptinit; promptinit
-# optionally define some options
-PURE_CMD_MAX_EXEC_TIME=10
-PURE_PROMPT_SYMBOL=λ
-prompt pure
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
