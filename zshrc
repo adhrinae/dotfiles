@@ -30,17 +30,11 @@ alias y="yarn"
 
 alias cdw="cd ~/development/project_work/cloud-web"
 
-# zsh-completions
-# autoload -U compinit && compinit
-
 export EDITOR="vim"
 
 # Fzf with Ripgrep
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
-
-# alias-tips
-# export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
