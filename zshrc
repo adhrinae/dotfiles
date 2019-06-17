@@ -19,7 +19,7 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias rbs="ruby -run -e httpd . -p 7777"
 
-alias gud="gup origin develop"
+alias gfrd="gfr origin develop"
 alias gpd="gp origin develop"
 
 alias nr="npm run"
