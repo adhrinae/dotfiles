@@ -45,6 +45,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
 Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
 
 call plug#end()
 
@@ -52,9 +53,17 @@ call plug#end()
 "       Theme      "
 """"""""""""""""""""
 " Syntax highlighting and theme
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 syntax on
-set background=dark
-colorscheme gruvbox
+" gruvbox
+" set background=dark
+" colorscheme gruvbox
+
+" night-owl
+colorscheme night-owl
 
 " lightline settings
 set laststatus=2
@@ -64,7 +73,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
