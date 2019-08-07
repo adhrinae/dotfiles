@@ -16,5 +16,5 @@ set surround
 set hlsearch
 set incsearch
 set ignorecase smartcase
-set norelativenumber
+set rnu
 set ideajoin
