@@ -29,7 +29,7 @@ Plug 'mgee/lightline-bufferline'
 Plug 'simnalamburt/vim-tiny-ime', { 'do' : './build' }
 
 " Autocompletion and snippets
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -44,8 +44,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
-Plug 'morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
+Plug 'bluz71/vim-nightfly-guicolors'
 
 call plug#end()
 
@@ -63,7 +62,7 @@ syntax on
 " colorscheme gruvbox
 
 " night-owl
-colorscheme night-owl
+colorscheme nightfly
 
 " lightline settings
 set laststatus=2
@@ -73,7 +72,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'nightfly',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
