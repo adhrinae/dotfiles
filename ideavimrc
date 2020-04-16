@@ -9,6 +9,7 @@ let mapleader=","
 nmap <Leader><CR> :nohlsearch<cr>
 
 nmap <tab> :action NextSplitter<CR>
+nmap <C-w><o> :action SplitVertically<CR>:action MoveEditorToOppositeTabGroup<CR>
 nmap <leader>h :action PreviousTab<CR>
 nmap <leader>l :action NextTab<CR>
 
