@@ -25,9 +25,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
-" Auto ime switch when back to NORMAL mode
-Plug 'simnalamburt/vim-tiny-ime', { 'do' : './build' }
-
 " Autocompletion and snippets
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'SirVer/ultisnips'
@@ -57,9 +54,6 @@ if (has("termguicolors"))
 endif
 
 syntax on
-" gruvbox
-" set background=dark
-" colorscheme gruvbox
 
 " night-owl
 colorscheme nightfly
