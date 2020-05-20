@@ -66,7 +66,7 @@ zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'spaceship'
+zstyle ':prezto:module:prompt' theme 'pure'
 
 #
 # Syntax Highlighting
