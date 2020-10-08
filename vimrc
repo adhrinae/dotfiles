@@ -42,6 +42,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'cormacrelf/vim-colors-github'
 
 call plug#end()
 
@@ -56,7 +57,9 @@ endif
 syntax on
 
 " night-owl
-colorscheme nightfly
+" colorscheme nightfly
+" github
+colorscheme github
 
 " lightline settings
 set laststatus=2
@@ -66,7 +69,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'nightfly',
+      \ 'colorscheme': 'github',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
