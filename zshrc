@@ -25,6 +25,8 @@ alias y="yarn"
 
 alias cdw="cd ~/development/project_work/cloud-web"
 
+alias py3="python3"
+
 export EDITOR="vim"
 
 # Fzf with Ripgrep
@@ -33,3 +35,5 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
