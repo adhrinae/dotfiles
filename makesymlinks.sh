@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc ideavimrc tmux.conf zshrc zpreztorc hyper.js purepower finicky.js"    # list of files/folders to symlink in homedir
+files="vimrc ideavimrc tmux.conf zshrc zpreztorc finicky.js"    # list of files/folders to symlink in homedir
 
 ##########
 
