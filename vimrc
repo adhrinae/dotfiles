@@ -26,7 +26,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 
 " Autocompletion and snippets
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -42,6 +42,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Theme
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'arcticicestudio/nord-vim'
 Plug 'cormacrelf/vim-colors-github'
 
 call plug#end()
@@ -51,15 +52,19 @@ call plug#end()
 """"""""""""""""""""
 " Syntax highlighting and theme
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
 
 syntax on
 
 " night-owl
 " colorscheme nightfly
+
 " github
 colorscheme github
+
+" Nord
+colorscheme nord
 
 " lightline settings
 set laststatus=2
@@ -69,7 +74,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'github',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
