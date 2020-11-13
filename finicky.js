@@ -18,9 +18,5 @@ module.exports = {
       match: [/facebook\.com/, /twitter\.com/, /linkedin\.com/, /netflix\.com/],
       browser: "Safari",
     },
-    {
-      match: [/youtube\.com/, /youtu\.be/, /github\.com/],
-      browser: "Microsoft Edge",
-    },
   ],
 };
