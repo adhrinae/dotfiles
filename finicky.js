@@ -11,6 +11,7 @@ module.exports = {
         /figma\.com/,
         /protopie\.io/,
         /docs\.google\.com/,
+        /zoom\.us/,
       ],
       browser: "Google Chrome",
     },
