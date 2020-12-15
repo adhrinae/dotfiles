@@ -93,6 +93,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 "      Basic       "
 """"""""""""""""""""
 set nu
+set noswapfile
 let g:netrw_liststyle=3
 
 set tabstop=2
