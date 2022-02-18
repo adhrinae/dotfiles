@@ -5,7 +5,6 @@ ino jk <esc>
 cno jk <c-c>
 vno v <esc>
 
-let mapleader=","
 nmap <Leader><CR> :nohlsearch<cr>
 
 nmap <tab> :action NextSplitter<CR>

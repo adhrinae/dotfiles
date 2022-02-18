@@ -2,9 +2,10 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-alias vi="vim"
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
+alias vi="nvim"
+alias vim="nvim"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.vimrc"
 
 alias nr="npm run"
 alias ys="yarn start"
@@ -16,7 +17,7 @@ alias py3="python3"
 
 alias az="arch -x86_64 zsh"
 
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # prezto
 setopt EXTENDED_GLOB
