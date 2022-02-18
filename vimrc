@@ -97,8 +97,8 @@ set foldnestmax=1
 set foldlevelstart=1
 
 " Keymaps
-noremap j gj
-noremap k gk
+nnoremap j gj
+nnoremap k gk
 ino jk <esc>
 cno jk <c-c>
 vno v <esc>
@@ -147,11 +147,11 @@ syntax enable
 set termguicolors 
 
 " Light scheme
-colorscheme night_owl_light
+" colorscheme night_owl_light
 
 " Dark scheme
-"colorscheme falcon
-"set background=dark
+colorscheme falcon
+set background=dark
 
 " Show character column
 set colorcolumn=80
@@ -171,3 +171,4 @@ let g:blamer_enabled = 1
 " %a is the day of week, in case it's needed
 let g:blamer_date_format = '%e %b %Y'
 highlight Blamer guifg=darkorange
+
