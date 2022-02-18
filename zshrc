@@ -14,9 +14,24 @@ alias y="yarn"
 
 alias py3="python3"
 
+alias az="arch -x86_64 zsh"
+
 export EDITOR="vim"
 
+# prezto
 setopt EXTENDED_GLOB
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+# asdf
+. /opt/homebrew/opt/asdf/asdf.sh
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
