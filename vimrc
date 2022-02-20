@@ -130,9 +130,6 @@ Plug 'tpope/vim-surround'
 " https://github.com/tpope/vim-vinegar
 Plug 'tpope/vim-vinegar'
 
-" https://github.com/APZelos/blamer.nvim
-Plug 'APZelos/blamer.nvim'
-
 " https://github.com/fenetikm/falcon/wiki/Installation
 Plug 'fenetikm/falcon'
 
@@ -166,9 +163,4 @@ let g:lightline = {
       \             [ 'readonly', 'absolutepath', 'modified' ] ]
       \ }
       \ }
-
-let g:blamer_enabled = 1
-" %a is the day of week, in case it's needed
-let g:blamer_date_format = '%e %b %Y'
-highlight Blamer guifg=darkorange
 
