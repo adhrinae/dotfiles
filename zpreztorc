@@ -8,7 +8,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'git' \
-  'contrib-prompt' \
   'prompt' \
   'autosuggestions' \
   'syntax-highlighting' \
@@ -16,11 +15,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'osx' \
   'spectrum' \
-  'alias-tips'
-
-# Need prezto-contrib
-# https://github.com/belak/prezto-contrib
-zstyle ":prezto:module:alias-tips" text "Alias tip: "
+  'node'
 
 #
 # Autosuggestions
