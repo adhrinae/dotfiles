@@ -18,3 +18,5 @@ set incsearch
 set ignorecase smartcase
 set rnu
 set ideajoin
+set easymotion
+
