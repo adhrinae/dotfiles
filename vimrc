@@ -97,11 +97,16 @@ set foldnestmax=1
 set foldlevelstart=1
 
 " Keymaps
-nnoremap j gj
-nnoremap k gk
-ino jk <esc>
-cno jk <c-c>
-vno v <esc>
+if exists('g:vscode')
+  nmap j gj
+  nmap k gk
+else
+  nnoremap j gj
+  nnoremap k gk
+  ino jk <esc>
+  cno jk <c-c>
+  vno v <esc>
+endif
 
 " netrw and vim-vinegar
 let g:netrw_browse_split = 3
