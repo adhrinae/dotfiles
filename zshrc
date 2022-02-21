@@ -25,11 +25,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
-
-# asdf
-. /opt/homebrew/opt/asdf/asdf.sh
+if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+  alias brew=/usr/local/homebrew/bin/brew
+  # Homebrew
+  eval $(/opt/homebrew/bin/brew shellenv)
+  # asdf
+  . /opt/homebrew/opt/asdf/asdf.sh
+else
+  export PATH="/usr/local/sbin:$PATH"
+fi
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
