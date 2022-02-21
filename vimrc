@@ -135,6 +135,12 @@ Plug 'tpope/vim-surround'
 " https://github.com/tpope/vim-vinegar
 Plug 'tpope/vim-vinegar'
 
+if exists('g:vscode')
+  Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
+else
+  Plug 'easymotion/vim-easymotion'
+endif
+
 " https://github.com/fenetikm/falcon/wiki/Installation
 Plug 'fenetikm/falcon'
 
