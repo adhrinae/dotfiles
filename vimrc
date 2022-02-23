@@ -25,9 +25,6 @@ au FocusGained,BufEnter * :silent! !
 " use Unicode
 set encoding=utf-8
 
-" errors flash screen rather than emit beep
-set visualbell
-
 " make Backspace work like Delete
 set backspace=indent,eol,start
 
