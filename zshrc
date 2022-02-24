@@ -33,6 +33,9 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
   . /opt/homebrew/opt/asdf/asdf.sh
 else
   export PATH="/usr/local/sbin:$PATH"
+
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 fi
 
 
