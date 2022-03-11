@@ -1,5 +1,7 @@
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -28,24 +30,21 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+  alias brew=/usr/local/homebrew/bin/brew
   # Homebrew
   eval $(/opt/homebrew/bin/brew shellenv)
-
   # asdf
-  . $HOME/.asdf/asdf.sh
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
-  # initialise completions with ZSH's compinit
-  autoload -Uz compinit && compinit
+  . /opt/homebrew/opt/asdf/asdf.sh
 else
   export PATH="/usr/local/sbin:$PATH"
 fi
 
 export VOLTA_HOME="$HOME/.volta"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+eval "$(fig init zsh post)"
