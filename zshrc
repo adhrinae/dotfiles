@@ -30,11 +30,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
-  alias brew=/usr/local/homebrew/bin/brew
   # Homebrew
   eval $(/opt/homebrew/bin/brew shellenv)
+
   # asdf
-  . /opt/homebrew/opt/asdf/asdf.sh
+  source $HOME/.asdf/asdf.sh
 else
   export PATH="/usr/local/sbin:$PATH"
 fi
