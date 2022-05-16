@@ -32,17 +32,15 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
   eval $(/opt/homebrew/bin/brew shellenv)
 
   # asdf
-  source $HOME/.asdf/asdf.sh
+  source $(brew --prefix asdf)/libexec/asdf.sh
 else
   export PATH="/usr/local/sbin:$PATH"
+
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+
+  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"
